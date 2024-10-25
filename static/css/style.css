@@ -57,3 +57,22 @@ input {
 p {
     margin-top: 15px;
 }
+
+.file-tree ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.file-tree li {
+    margin: 5px 0;
+}
+
+nav a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: blue;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}

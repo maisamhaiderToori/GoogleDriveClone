@@ -1,11 +1,11 @@
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
 
-
 def home_view(request):
-    return render(request, 'home.html')  # Render the home template
-
+    return render(request, 'home.html', {
+        'is_authenticated': request.user.is_authenticated,  # Check if the user is logged in
+    })
 
 def signup_view(request):
     if request.method == 'POST':
@@ -29,3 +29,7 @@ def login_view(request):
     else:
         form = AuthenticationForm()
     return render(request, 'drive/login.html', {'form': form})
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')  # Redirect to the home page after logging out

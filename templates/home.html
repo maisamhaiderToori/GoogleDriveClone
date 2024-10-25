@@ -9,11 +9,35 @@
 <body>
     <div class="container">
         <h1>Welcome to Your Cloud Drive</h1>
-        <p>Manage your files seamlessly.</p>
         
-        <nav>
-          
-        </nav>
+        {% if is_authenticated %}
+            <nav>
+                <a href="{% url 'logout' %}">Logout</a>
+            </nav>
+            <h2>Your Files</h2>
+            <div class="file-tree">
+                <ul>
+                    <li>Documents
+                        <ul>
+                            <li>file1.txt</li>
+                            <li>bread recipe.pdf</li>
+                        </ul>
+                    </li>
+                    <li>Images
+                        <ul>
+                            <li>eiffel_tower.png</li>
+                        </ul>
+                    </li>
+                    <li>Videos
+                        <ul>
+                            <li>python_lecture.mp4</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        {% else %}
+            <p>Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'signup' %}">sign up</a>.</p>
+        {% endif %}
     </div>
 </body>
 </html>
